@@ -8,12 +8,17 @@ public class Rot13 {
         String cadena = ""; 
 
         System.out.println("Text a xifrar?");
-        String entrada = Entrada.readLine();   // hola
+        String entrada = Entrada.readLine();   // sola
 
         for (int i = 0; i <= entrada.length()-1; i++) {
              for(int z = 0; z < lletres.length; z++ ) {
                 if(entrada.charAt(i) == lletres[z]) {
-                    cadena = cadena + lletres[z];
+                    if((lletres[z] + 13) > lletres.length) {
+                       int correcio = ((lletres[z+ 13]) - lletres.length);
+                       cadena = cadena + lletres[correcio];
+                    } else {
+                        cadena = cadena + lletres[z + 13];
+                    }
                 }
              }
 
