@@ -14,18 +14,35 @@ public class Rot13 {
         String entrada = Entrada.readLine();   // sola
 
         for (int i = 0; i <= entrada.length()-1; i++) {
-             for(int z = 0; z < lletresMin.length; z++ ) {
-                if(entrada.charAt(i) == lletresMin[z]) {
-                    if((posicio + z + 13) > lletresMin.length) {
-                        int correcio = posicio + z + 13 - lletresMin.length;
-                       cadena = cadena + lletresMin[correcio];
-                    } 
-                    else {
-                        int correcio2 = z + 13;
-                        cadena = cadena + lletresMin[correcio2];
+            if(Character.isUpperCase(entrada.charAt(i))) {
+                for(int z = 0; z < lletresMaj.length; z++ ) {
+                    if(entrada.charAt(i) == lletresMaj[z]) {
+                        if((posicio + z + 13) > lletresMaj.length) {
+                            int correcio = posicio + z + 13 - lletresMaj.length;
+                           cadena = cadena + lletresMaj[correcio];
+                        } 
+                        else {
+                            int correcio2 = z + 13;
+                            cadena = cadena + lletresMaj[correcio2];
+                        }
+                    }
+                 }
+            }
+            else {
+                for(int z = 0; z < lletresMin.length; z++ ) {
+                    if(entrada.charAt(i) == lletresMin[z]) {
+                        if((posicio + z + 13) > lletresMin.length) {
+                            int correcio = posicio + z + 13 - lletresMin.length;
+                           cadena = cadena + lletresMin[correcio];
+                        } 
+                        else {
+                            int correcio2 = z + 13;
+                            cadena = cadena + lletresMin[correcio2];
+                        }
                     }
                 }
-             }
+            }
+            
 
         }
         System.out.println(cadena);  
