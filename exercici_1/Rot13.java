@@ -12,33 +12,39 @@ public class Rot13 {
         String cadena = "";   
          
             for (int i = 0; i <= entrada.length()-1; i++) {
-                if(Character.isUpperCase(entrada.charAt(i))) {
-                    for(int z = 0; z < lletresMaj.length; z++ ) {
-                        if(entrada.charAt(i) == lletresMaj[z]) {
-                            if(( + z + 13) > lletresMaj.length) {
-                                int correcio = z + 13 - lletresMaj.length;
-                                cadena = cadena + lletresMaj[correcio];
-                            } 
-                            else {
-                                int correcio2 = z + 13;
-                                cadena = cadena + lletresMaj[correcio2];
+                    if(Character.isLetter(entrada.charAt(i))) {
+                        if(Character.isUpperCase(entrada.charAt(i))) {
+                            for(int z = 0; z < lletresMaj.length; z++ ) {
+                                if(entrada.charAt(i) == lletresMaj[z]) {
+                                    if(( + z + 13) > lletresMaj.length) {
+                                        int correcio = z + 13 - lletresMaj.length;
+                                        cadena = cadena + lletresMaj[correcio];
+                                    } 
+                                    else {
+                                        int correcio2 = z + 13;
+                                        cadena = cadena + lletresMaj[correcio2];
+                                    }
+                                }
+                            }
+                        } 
+                        else {
+                            for(int z = 0; z < lletresMin.length; z++ ) {
+                                if(entrada.charAt(i) == lletresMin[z]) {
+                                    if(( z + 13) > lletresMin.length) {
+                                        int correcio = z + 13 - lletresMin.length;
+                                        cadena = cadena + lletresMin[correcio];
+                                    } else {
+                                        int correcio2 = z + 13;
+                                        cadena = cadena + lletresMin[correcio2];
+                                    }
+                                }
                             }
                         }
                     }
-                } 
-                else {
-                    for(int z = 0; z < lletresMin.length; z++ ) {
-                        if(entrada.charAt(i) == lletresMin[z]) {
-                            if(( z + 13) > lletresMin.length) {
-                                int correcio = z + 13 - lletresMin.length;
-                                cadena = cadena + lletresMin[correcio];
-                            } else {
-                                int correcio2 = z + 13;
-                                cadena = cadena + lletresMin[correcio2];
-                            }
-                        }
+                    else {
+                        cadena = cadena + entrada.charAt(i);
                     }
-                }
+                    
             }
             return cadena;  
     } 
@@ -50,35 +56,41 @@ public class Rot13 {
             String cadenaDesxifrat = "";
 
             for(int i = 0; i <= entrada.length()-1; i++) {
-                if(Character.isUpperCase(entrada.charAt(i))) {
-                    for(int z = 0; z < lletresMaj.length; z++) {
-                        if(entrada.charAt(i) == lletresMaj[z]) {
-                            if(z - 13 < 0) {
-                                int correcio3 = z - 13 + lletresMaj.length;
-                                cadenaDesxifrat = cadenaDesxifrat + lletresMaj[correcio3];
-                            } else {
-                                int correcio3 = z - 13;
-                                cadenaDesxifrat = cadenaDesxifrat + lletresMaj[correcio3];
+                if(Character.isLetter(entrada.charAt(i))) {
+                    if(Character.isUpperCase(entrada.charAt(i))) {
+                        for(int z = 0; z < lletresMaj.length; z++) {
+                            if(entrada.charAt(i) == lletresMaj[z]) {
+                                if(z - 13 < 0) {
+                                    int correcio3 = z - 13 + lletresMaj.length;
+                                    cadenaDesxifrat = cadenaDesxifrat + lletresMaj[correcio3];
+                                } else {
+                                    int correcio3 = z - 13;
+                                    cadenaDesxifrat = cadenaDesxifrat + lletresMaj[correcio3];
+                                }
                             }
                         }
-                    }
-                } 
-                else {
-                    if(Character.isLowerCase(entrada.charAt(i))) {
-                        for(int z = 0; z < lletresMin.length; z++) {
-                            if(entrada.charAt(i) == lletresMin[z]) {
-                                if(z - 13 < 0) {
-                                    int correcio3 = z - 13 + lletresMin.length;
-                                    cadenaDesxifrat = cadenaDesxifrat + lletresMin[correcio3];
-                                } 
-                                else {
-                                    int correcio4 = z - 13;
-                                    cadenaDesxifrat = cadenaDesxifrat + lletresMin[correcio4];
+                    } 
+                    else {
+                        if(Character.isLowerCase(entrada.charAt(i))) {
+                            for(int z = 0; z < lletresMin.length; z++) {
+                                if(entrada.charAt(i) == lletresMin[z]) {
+                                    if(z - 13 < 0) {
+                                        int correcio3 = z - 13 + lletresMin.length;
+                                        cadenaDesxifrat = cadenaDesxifrat + lletresMin[correcio3];
+                                    } 
+                                    else {
+                                        int correcio4 = z - 13;
+                                        cadenaDesxifrat = cadenaDesxifrat + lletresMin[correcio4];
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                else {
+                    cadenaDesxifrat = cadenaDesxifrat + entrada.charAt(i);
+                }
+                    
             }
             return cadenaDesxifrat;  
         }
