@@ -29,15 +29,16 @@ public class RotX {
             System.out.println();
             System.out.println("forcaBrutaRotX:");
 
-            for(int y = 0; y < provesDesxifrar.length; y++) {
-                for(int x = 0; x < lletresMaj.length; x ++) {
-                    String guardarForcaBruta = desxifraRotX(provesDesxifrar[y], x);
-                    System.out.println(guardarForcaBruta);
-
-                }
-            }
+            
                 
             
+        }
+        for(int y = 0; y < provesDesxifrar.length; y++) {
+            for(int x = 0; x < lletresMaj.length; x ++) {
+                String guardarForcaBruta = desxifraRotX(provesDesxifrar[y], x);
+                System.out.println(guardarForcaBruta);
+
+            }
         }
 
     }
