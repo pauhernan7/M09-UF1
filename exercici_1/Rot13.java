@@ -16,7 +16,7 @@ public class Rot13 {
                         if(Character.isUpperCase(entrada.charAt(i))) {
                             for(int z = 0; z < lletresMaj.length; z++ ) {
                                 if(entrada.charAt(i) == lletresMaj[z]) {
-                                    if(( + z + 13) > lletresMaj.length) {
+                                    if(( z + 13) > lletresMaj.length) {
                                         int correcio = z + 13 - lletresMaj.length;
                                         cadena = cadena + lletresMaj[correcio];
                                     } 
