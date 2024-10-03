@@ -4,10 +4,10 @@ public class RotX {
     public static final char [] lletresMin = {'a', 'á', 'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'ó', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'v', 'w', 'x', 'y', 'z'};
     public static void main(String [] args) {
         String provesText [] = {"!!! abcABCxyzXYZ !!!", "!!!!BONdia???"};
-        int provesPosicio [] = {10,100};
+        int provesPosicio [] = {10,25};
 
-        String provesDesxifrar [] = {"!!! ijkIJKfghFGH !!!", "!!!!PDBrwo???"};
-        int posicioDesxifra [] = {10,100}; 
+        String provesDesxifrar [] = {"!!! ijkIJKfghFGH !!!", "!!!!VÍHxcu???"};
+        int posicioDesxifra [] = {10,25}; 
         
 
         for(int i = 0; i < provesText.length; i ++) {
@@ -95,12 +95,9 @@ public class RotX {
                         if(entrada.charAt(i) == lletresMaj[z]) {
                             int posicioNova = z - posicio;
                             if(posicioNova < 0) {
-                                posicioNova = Math.abs(posicioNova) % lletresMaj.length;
-                                cadenaDesxifrada = cadenaDesxifrada + lletresMaj[lletresMaj.length-posicioNova];
+                                posicioNova = posicioNova + lletresMaj.length;
                             }
-                            else {
                                 cadenaDesxifrada = cadenaDesxifrada + lletresMaj[posicioNova];
-                            }
                             break;
                                 
                         }
@@ -112,12 +109,9 @@ public class RotX {
                         if(entrada.charAt(i) == lletresMin[z]) {
                             int posicioNova = z - posicio;
                             if(posicioNova < 0) {
-                                posicioNova = Math.abs(posicioNova) % lletresMin.length;
-                                cadenaDesxifrada = cadenaDesxifrada + lletresMin[lletresMin.length-posicioNova];
+                                posicioNova = posicioNova + lletresMin.length;
                             }
-                            else {
-                                cadenaDesxifrada = cadenaDesxifrada + lletresMin[posicioNova];
-                            }
+                            cadenaDesxifrada = cadenaDesxifrada + lletresMin[posicioNova];
                             break;
                                
                         }
