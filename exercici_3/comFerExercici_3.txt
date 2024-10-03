@@ -1,0 +1,5 @@
+1 crear array abecedari
+
+2 crear array mateixa dimensio que el original
+
+3 crear mètode permuta...  
