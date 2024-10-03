@@ -4,10 +4,10 @@ public class RotX {
     public static final char [] lletresMin = {'a', 'á', 'b', 'c', 'd', 'e', 'é', 'f', 'g', 'h', 'i', 'í', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'ó', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'v', 'w', 'x', 'y', 'z'};
     public static void main(String [] args) {
         String provesText [] = {"!!! abcABCxyzXYZ !!!", "!!!!BONdia???"};
-        int provesPosicio [] = {10,20};
+        int provesPosicio [] = {10,100};
 
-        String provesDesxifrar [] = {"!!! ijkIJKfghFGH !!!", "!!!!RÉDtyp???"};
-        int posicioDesxifra [] = {10,20}; 
+        String provesDesxifrar [] = {"!!! ijkIJKfghFGH !!!", "!!!!PDBrwo???"};
+        int posicioDesxifra [] = {10,100}; 
         
 
         for(int i = 0; i < provesText.length; i ++) {
@@ -20,19 +20,13 @@ public class RotX {
             System.out.println(guardarXifrat);
             
             //prova desxifrat
-            System.out.println("Text a desxifrar:");
-            System.out.println(provesDesxifrar[i]);
-            desxifraRotX(provesDesxifrar[i], posicioDesxifra[i]);
             String guardarDesxifrat = desxifraRotX(provesDesxifrar[i], posicioDesxifra[i]);
-            System.out.println("Text desxifrat");
+            System.out.println("Text desxifrat:");
             System.out.println(guardarDesxifrat);
-            System.out.println();
-            System.out.println("forcaBrutaRotX:");
-
-            
-                
-            
+            System.out.println();  
         }
+
+        System.out.println("forcaBrutaRotX:");
         for(int y = 0; y < provesDesxifrar.length; y++) {
             for(int x = 0; x < lletresMaj.length; x ++) {
                 String guardarForcaBruta = desxifraRotX(provesDesxifrar[y], x);
@@ -85,8 +79,6 @@ public class RotX {
             else {
                 cadenaXifrada = cadenaXifrada + entrada.charAt(i);
             }
-                
-
         }
 
         return cadenaXifrada;
@@ -95,50 +87,52 @@ public class RotX {
     public static String desxifraRotX(String entrada, int posicio) {
 
         String cadenaDesxifrada = "";
-        
-        //{"AB","YZ"}
-        //{5,20}
-
 
         for(int i = 0; i <= entrada.length()-1; i++) {
             if(Character.isLetter(entrada.charAt(i))) {
                 if(Character.isUpperCase(entrada.charAt(i))) {
                     for(int z = 0; z < lletresMaj.length; z++) {
                         if(entrada.charAt(i) == lletresMaj[z]) {
-                            int posicioNova = (z - posicio) % lletresMaj.length;
+                            int posicioNova = z - posicio;
                             if(posicioNova < 0) {
-                                posicioNova += lletresMaj.length ;
+                                posicioNova = Math.abs(posicioNova) % lletresMaj.length;
+                                cadenaDesxifrada = cadenaDesxifrada + lletresMaj[lletresMaj.length-posicioNova];
                             }
-                            cadenaDesxifrada = cadenaDesxifrada + lletresMaj[posicioNova];
+                            else {
+                                cadenaDesxifrada = cadenaDesxifrada + lletresMaj[posicioNova];
+                            }
                             break;
+                                
+                        }
 
                         }
-                    }
                 }
                 else {
                     for(int z = 0; z < lletresMin.length; z++) {
                         if(entrada.charAt(i) == lletresMin[z]) {
-                            int posicioNova = (z - posicio) % lletresMin.length;
+                            int posicioNova = z - posicio;
                             if(posicioNova < 0) {
-                                posicioNova += lletresMin.length;
+                                posicioNova = Math.abs(posicioNova) % lletresMin.length;
+                                cadenaDesxifrada = cadenaDesxifrada + lletresMin[lletresMin.length-posicioNova];
                             }
-                            cadenaDesxifrada = cadenaDesxifrada + lletresMin[posicioNova];
+                            else {
+                                cadenaDesxifrada = cadenaDesxifrada + lletresMin[posicioNova];
+                            }
                             break;
-
+                               
                         }
+
                     }
-                }
-                
-            }
+                }      
+            }    
             else {
                 cadenaDesxifrada = cadenaDesxifrada + entrada.charAt(i);
             }
-                
-
         }
-
         return cadenaDesxifrada;
     }
 
 
 }
+
+
