@@ -6,7 +6,7 @@ public class Monoalfabetic {
 
     public static final char [] abecedariOriginalMaj = {'A','À', 'Á', 'B', 'C', 'Ç', 'D', 'E', 'È', 'É', 'F', 'G', 'H', 'I', 'Ì', 'Í', 'Ï', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'Ò', 'Ó', 'P', 'Q', 'R', 'S', 'T', 'U', 'Ú', 'Ù', 'Ü', 'V', 'W', 'X', 'Y', 'Z'};
     
-    public static final char [] abecedariOriginalMin = {'a','à', 'á', 'b', 'c', 'ç', 'd', 'e', 'è', 'é', 'f', 'g', 'h', 'i', 'ì', 'í', 'ï', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'ò', 'ó', 'p', 'q', 'r', 's', 't', 'u', 'ú', 'ù', 'ü', 'v', 'w', 'x', 'y', 'z'}; 
+    public static final char [] abecedariOriginalMin = new char[abecedariOriginalMaj.length];
     
     public static char abecedariPermutat [] = new char [abecedariOriginalMaj.length];
     
@@ -32,12 +32,25 @@ public class Monoalfabetic {
     public static String xifraMonoAlfa(String entrada) {
         String cadenaXifrada = "";
 
+        for(int i = 0; i < abecedariOriginalMaj.length;i++) {
+            abecedariOriginalMin[i] = Character.toLowerCase(abecedariOriginalMaj[i]);
+        }
+
         for(int i = 0; i <= entrada.length()-1; i ++) {
             for(int z = 0; z < abecedariOriginalMaj.length; z++) {
-                if(entrada.charAt(i) == abecedariOriginalMaj[z]) {
-                    int posicio = z;
-                    cadenaXifrada = cadenaXifrada + abecedariPermutat[posicio];
+                if(Character.isUpperCase(entrada.charAt(i))) {
+                    if(entrada.charAt(i) == abecedariOriginalMaj[z]) {
+                        int posicio = z;
+                        cadenaXifrada = cadenaXifrada + abecedariPermutat[posicio];
+                    }
                 }
+                else {
+                    if(entrada.charAt(i) == abecedariOriginalMin[z]) {
+                        int posicio = z;
+                        cadenaXifrada = cadenaXifrada + Character.toLowerCase(abecedariPermutat[posicio]);
+                    }
+                }
+                
             }
         }
         return cadenaXifrada;
@@ -47,13 +60,13 @@ public class Monoalfabetic {
 
     
     public static void main(String[]args) {
-        String proves [] = {"ABCXYZGÚÚ"};
+        String proves [] = {"aBCXYZGÚÚaghfjsz"};
         
         abecedariPermutat = permutaAlfabet(abecedariOriginalMaj);
         for (int i = 0; i < proves.length; i++) {
         String guardarXifrat = xifraMonoAlfa(proves[i]);
-          System.out.println(guardarXifrat);  
-                  
+        System.out.println(guardarXifrat);  
+        
         }
         
 
