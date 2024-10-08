@@ -9,6 +9,7 @@ public class Monoalfabetic {
     public static final char [] abecedariOriginalMin = new char[abecedariOriginalMaj.length];
     
     public static char abecedariPermutat [] = new char [abecedariOriginalMaj.length];
+    public static char abecedariPermutatMin [] = new char [abecedariOriginalMaj.length];
     
 
     public static char [] permutaAlfabet(char [] abecedari) {
@@ -65,26 +66,56 @@ public class Monoalfabetic {
     
 
 
-    /*public static String desxifraMonoAlfa(String entrada) {
+    public static String desxifraMonoAlfa(String entrada) {
         String cadenaDesxifrada = "";
 
+        for(int i = 0; i<abecedariOriginalMaj.length;i++) {
+            abecedariPermutatMin[i] = Character.toLowerCase(abecedariPermutat[i]);
+        }
 
-        return ;
-    }*/
+        for(int i = 0; i <= entrada.length()-1;i++) {
+            if(Character.isLetter(entrada.charAt(i))) {
+                for(int z = 0;z < abecedariOriginalMaj.length; z++) {
+                    if(Character.isUpperCase(entrada.charAt(i))) {
+                        if(entrada.charAt(i) == abecedariPermutat[z]) {
+                            int posicio = z;
+                            cadenaDesxifrada = cadenaDesxifrada + abecedariOriginalMaj[posicio];
+                        }
+                    }
+                    else {
+                        if(entrada.charAt(i) == abecedariPermutatMin[z]) {
+                            int posicio = z;
+                            cadenaDesxifrada = cadenaDesxifrada + abecedariOriginalMin[posicio];
+                        }
+                    }
+                }
+            }
+            else {
+                cadenaDesxifrada = cadenaDesxifrada + entrada.charAt(i);
+            }
+        }
+
+        return cadenaDesxifrada;
+    }
 
 
 
     
     public static void main(String[]args) {
-        String proves [] = {"!aBCXYZGÚÚaghfjsz?"};
+        String proves [] = {"!!!aBCXYZGÚÚaghfjsz ¿¿?","!!!   abcABCHGJDSknsansd???"};
         
         abecedariPermutat = permutaAlfabet(abecedariOriginalMaj);
         for (int i = 0; i < proves.length; i++) {
+        System.out.println("Text a  xifrar: " + proves[i]);
+        
         String guardarXifrat = xifraMonoAlfa(proves[i]);
-        System.out.println(guardarXifrat);  
+        System.out.println("Text    xifrat: " + guardarXifrat);
+         
 
-        //String guardarDesxifrat = desxifraMonoAlfa(guardarXifrat);
-        //System.out.println(guardarDesxifrat);
+        String guardarDesxifrat = desxifraMonoAlfa(guardarXifrat);
+        System.out.println("Text desxifrat: " + guardarDesxifrat);
+        System.out.println();
+        
         
         }
         
