@@ -15,7 +15,7 @@ public class Monoalfabetic {
         
         List<Character> llistaCharacters = new ArrayList<>();
         for (int i = 0; i < abecedari.length; i++) {
-            llistaCharacters.add(abecedari[i]);
+            llistaCharacters.add(abecedari[i]);  
         }
         Collections.shuffle(llistaCharacters);
         
@@ -37,35 +37,54 @@ public class Monoalfabetic {
         }
 
         for(int i = 0; i <= entrada.length()-1; i ++) {
-            for(int z = 0; z < abecedariOriginalMaj.length; z++) {
-                if(Character.isUpperCase(entrada.charAt(i))) {
-                    if(entrada.charAt(i) == abecedariOriginalMaj[z]) {
-                        int posicio = z;
-                        cadenaXifrada = cadenaXifrada + abecedariPermutat[posicio];
+            if(Character.isLetter(entrada.charAt(i))) {
+                for(int z = 0; z < abecedariOriginalMaj.length; z++) {
+                    if(Character.isUpperCase(entrada.charAt(i))) {
+                        if(entrada.charAt(i) == abecedariOriginalMaj[z]) {
+                            int posicio = z;
+                            cadenaXifrada = cadenaXifrada + abecedariPermutat[posicio];
+                        }
+                    }
+                    else {
+                        if(entrada.charAt(i) == abecedariOriginalMin[z]) {
+                            int posicio = z;
+                            cadenaXifrada = cadenaXifrada + Character.toLowerCase(abecedariPermutat[posicio]);
+                        }
                     }
                 }
-                else {
-                    if(entrada.charAt(i) == abecedariOriginalMin[z]) {
-                        int posicio = z;
-                        cadenaXifrada = cadenaXifrada + Character.toLowerCase(abecedariPermutat[posicio]);
-                    }
-                }
-                
             }
+            else {
+                cadenaXifrada = cadenaXifrada + entrada.charAt(i);
+            }
+                    
+                
         }
         return cadenaXifrada;
     }
+        
+    
+
+
+    /*public static String desxifraMonoAlfa(String entrada) {
+        String cadenaDesxifrada = "";
+
+
+        return ;
+    }*/
 
 
 
     
     public static void main(String[]args) {
-        String proves [] = {"aBCXYZGÚÚaghfjsz"};
+        String proves [] = {"!aBCXYZGÚÚaghfjsz?"};
         
         abecedariPermutat = permutaAlfabet(abecedariOriginalMaj);
         for (int i = 0; i < proves.length; i++) {
         String guardarXifrat = xifraMonoAlfa(proves[i]);
         System.out.println(guardarXifrat);  
+
+        //String guardarDesxifrat = desxifraMonoAlfa(guardarXifrat);
+        //System.out.println(guardarDesxifrat);
         
         }
         
