@@ -12,13 +12,13 @@ public class polialfabetic {
 
     private static Random random;
 
-    // Genera una permutació de l'alfabet basada en una llavor aleatòria
+    
     public static char[] permutaAlfabet() {
         List<Character> lletresList = new ArrayList<>();
         for (char c : abecedariMaj) {
             lletresList.add(c);
         }
-        Collections.shuffle(lletresList, random); // Permutació controlada per la llavor
+        Collections.shuffle(lletresList, random); 
         char[] lletresPermutades = new char[lletresList.size()];
         for (int i = 0; i < lletresList.size(); i++) {
             lletresPermutades[i] = lletresList.get(i);
@@ -26,12 +26,12 @@ public class polialfabetic {
         return lletresPermutades;
     }
 
-    // Xifra amb polialfabètic utilitzant la llavor (contrasenya)
+    
     public static String xifraPoliAlfa(String cadena, String password) {
-        random = new Random(password.hashCode()); // Inicialitza amb la contrasenya
+        random = new Random(password.hashCode()); 
         StringBuilder nCadena = new StringBuilder();
         for (int z = 0; z < cadena.length(); z++) {
-            char[] alfabetNou = permutaAlfabet(); // Nova permutació per cada lletra
+            char[] alfabetNou = permutaAlfabet(); 
             char c = cadena.charAt(z);
             if (Character.isLetter(c)) {
                 if (Character.isUpperCase(c)) {
@@ -56,12 +56,12 @@ public class polialfabetic {
         return nCadena.toString();
     }
 
-    // Desxifra amb polialfabètic utilitzant la mateixa llavor (contrasenya)
+    
     public static String desxifraPoliAlfa(String cadena, String password) {
-        random = new Random(password.hashCode()); // Inicialitza amb la mateixa contrasenya
+        random = new Random(password.hashCode()); 
         StringBuilder nCadena = new StringBuilder();
         for (int z = 0; z < cadena.length(); z++) {
-            char[] alfabetNou = permutaAlfabet(); // Nova permutació per cada lletra
+            char[] alfabetNou = permutaAlfabet(); 
             char c = cadena.charAt(z);
             if (Character.isLetter(c)) {
                 if (Character.isUpperCase(c)) {
